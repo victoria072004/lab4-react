@@ -1,0 +1,83 @@
+[
+    {
+      "id": 1,
+      "question": "Care este capitala Franței?",
+      "category": "Geografie",
+      "difficulty": "Ușor",
+      "options": ["Paris", "Madrid", "Roma", "Berlin"],
+      "correct": "Paris"
+    },
+    {
+      "id": 2,
+      "question": "Cât este 7 x 8?",
+      "category": "Matematică",
+      "difficulty": "Mediu",
+      "options": ["56", "64", "48", "72"],
+      "correct": "56"
+    },
+    {
+      "id": 3,
+      "question": "Câte strofe are poezia “Luceafărul” de Mihai Eminescu?",
+      "category": "Literatură",
+      "difficulty": "Greu",
+      "options": ["98 de strofe", "88 de strofe", "78 de strofe", "68 de strofe"],
+      "correct": "98 de strofe"
+    },
+    {
+      "id": 4,
+      "question": "Care este simbolul chimic al apei?",
+      "category": "Chimie",
+      "difficulty": "Ușor",
+      "options": ["H2O", "CO2", "O2", "N2"],
+      "correct": "H2O"
+    },
+    {
+      "id": 5,
+      "question": "În ce țară s-a născut Adolf Hitler?",
+      "category": "Istorie",
+      "difficulty": "Mediu",
+      "options": ["Germania", "Austria", "Polonia", "Cehia"],
+      "correct": "Austria"
+    },
+    {
+      "id": 6,
+      "question": "Care este capitala Japoniei?",
+      "category": "Geografie",
+      "difficulty": "Ușor",
+      "options": ["Tokio", "Seul", "Peking", "Bangkok"],
+      "correct": "Tokio"
+    },
+    {
+      "id": 7,
+      "question": "Cine a scris „Micul Prinț”?",
+      "category": "Literatură",
+      "difficulty": "Mediu",
+      "options": ["Jules Verne", "Antoine de Saint-Exupéry", "Victor Hugo", "Emil Cioran"],
+      "correct": "Antoine de Saint-Exupéry"
+    },
+    {
+      "id": 8,
+      "question": "Care este cel mai mare mamifer?",
+      "category": "Biologie",
+      "difficulty": "Ușor",
+      "options": ["Balena albastră", "Elefantul african", "Girafa", "Căpcăunul"],
+      "correct": "Balena albastră"
+    },
+    {
+      "id": 9,
+      "question": "Câte continente există pe Pământ?",
+      "category": "Geografie",
+      "difficulty": "Mediu",
+      "options": ["6", "7", "8", "5"],
+      "correct": "7"
+    },
+    {
+      "id": 10,
+      "question": "Cum se numeşte modelul cosmologic care explică cum s-a format universul?",
+      "category": "Fizică",
+      "difficulty": "Greu",
+      "options": ["Milky Way", "Newton", "Big Bang", "Sirius"],
+      "correct": "Big Bang"
+    }
+  ]
+  

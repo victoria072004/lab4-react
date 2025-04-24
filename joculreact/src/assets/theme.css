@@ -1,0 +1,66 @@
+:root {
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --primary-color: #6e83f8;
+  --secondary-color: #f1f1f1;
+}
+
+.light {
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --primary-color: #e130e7;
+  --secondary-color: #e07de4;
+}
+
+.dark {
+  --background-color: #2c3e50;
+  --text-color: white;
+  --primary-color: #9b59b6;
+  --secondary-color: #134377;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+}
+
+.container {
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.theme-toggle-btn {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--secondary-color);
+}
