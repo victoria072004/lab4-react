@@ -1,72 +1,94 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { QuizContext } from "../context/QuizState";
 import "../styles/QuizPage.css";
 
 const QuizPage = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
+  const {
+    questions,
+    setQuestions,
+    handleAnswer,
+    saveHistory,
+    setSelectedAnswers,
+    setScore,
+  } = useContext(QuizContext);
 
-  const { name, questions = [], timer = 0 } = state || {};
+  const { name, questions: quizQuestions = [], timer = 0 } = state || {};
 
   const [index, setIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(timer);
-
-  const handleAnswer = useCallback((selected) => {
-    const current = questions[index];
-    const isCorrect = selected === current.correct;
-
-    const answerObj = {
-      question: current.question,
-      selected,
-      correct: current.correct,
-      category: current.category,
-      difficulty: current.difficulty,
-      isCorrect,
-    };
-
-    const existing = JSON.parse(localStorage.getItem("quizHistory")) || [];
-
-    const existingPlayerIndex = existing.findIndex(
-      (record) => record.name === name
-    );
-
-    if (existingPlayerIndex !== -1) {
-      if (existing[existingPlayerIndex].score < isCorrect ? 1 : 0) {
-        existing[existingPlayerIndex] = { ...answerObj }; 
-      }
-    } else {
-      existing.push({ ...answerObj });
-    }
-
-    if (existing.length > 10) existing.shift();
-
-    localStorage.setItem("quizHistory", JSON.stringify(existing));
-
-    if (index < questions.length - 1) {
-      setIndex(index + 1);
-      setTimeLeft(timer); 
-    } else {
-      const score = existing.filter((a) => a.isCorrect).length;
-
-      const resultData = {
-        name,
-        score,
-        total: questions.length,
-        answers: existing,
-        date: new Date().toLocaleString(),
-      };
-
-      navigate("/result", { state: resultData });
-    }
-  }, [index, questions, timer, name, navigate]);
+  const [_localAnswers, setLocalAnswers] = useState([]);
 
   useEffect(() => {
-    if (timeLeft <= 0) return;
+    if (quizQuestions.length === 0) {
+      return;
+    }
+    setQuestions(quizQuestions);
+    setSelectedAnswers([]);
+    setScore(0);
+    setLocalAnswers([]);
+  }, [quizQuestions, setQuestions, setSelectedAnswers, setScore]);
+
+  const handleAnswerClick = useCallback(
+    (selected) => {
+      const current = questions[index];
+      if (!current) {
+        return;
+      }
+      handleAnswer(selected, current);
+
+      const newAnswer = {
+        question: current.question,
+        selected,
+        correct: current.correct,
+        category: current.category,
+        difficulty: current.difficulty,
+        isCorrect: selected === current.correct,
+      };
+
+      setLocalAnswers((prev) => {
+        const updatedAnswers = [...prev, newAnswer];
+        if (index < questions.length - 1) {
+          setIndex(index + 1);
+          setTimeLeft(timer);
+        } else {
+          const score = updatedAnswers.filter((answer) => answer.isCorrect).length;
+          const resultData = {
+            name,
+            score,
+            total: questions.length,
+            answers: updatedAnswers,
+            date: new Date().toLocaleString(),
+          };
+
+          saveHistory(name, score, questions.length, updatedAnswers);
+          setSelectedAnswers(updatedAnswers);
+          navigate("/result", { state: resultData });
+        }
+        return updatedAnswers;
+      });
+    },
+    [
+      index,
+      questions,
+      timer,
+      name,
+      navigate,
+      handleAnswer,
+      saveHistory,
+      setSelectedAnswers,
+    ]
+  );
+
+  useEffect(() => {
+    if (timer <= 0) return;
 
     const interval = setInterval(() => {
       setTimeLeft((t) => {
         if (t <= 1) {
-          handleAnswer(null); 
+          handleAnswerClick(null);
           clearInterval(interval);
           return 0;
         }
@@ -75,13 +97,16 @@ const QuizPage = () => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [timeLeft, index, timer, questions.length, handleAnswer]);
+  }, [timeLeft, index, timer, handleAnswerClick]);
 
   if (questions.length === 0) {
     return <div className="centered">Nu sunt întrebări disponibile.</div>;
   }
 
   const current = questions[index];
+  if (!current) {
+    return <div className="centered">Eroare: Întrebare invalidă.</div>;
+  }
 
   return (
     <div className="quiz-container">
@@ -93,7 +118,11 @@ const QuizPage = () => {
 
         <div className="options">
           {current.options?.map((option, i) => (
-            <button key={i} className="option-btn" onClick={() => handleAnswer(option)}>
+            <button
+              key={i}
+              className="option-btn"
+              onClick={() => handleAnswerClick(option)}
+            >
               {option}
             </button>
           ))}

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import StartPage from "./pages/StartPage";
 import QuizPage from "./pages/QuizPage";
 import ResultPage from "./pages/ResultPage";
-import { QuizProvider } from "./context/QuizContext";
+import { QuizProvider } from './context/QuizProvider';
 import ThemeToggle from "./components/ThemeToggle"; 
 import HistoryPage from "./pages/HistoryPage";
 

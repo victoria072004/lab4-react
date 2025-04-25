@@ -58,7 +58,7 @@
   }
   
   .start-btn:hover {
-    background-color: #41d3bf;
+    background-color: var(--hover-color); 
     transform: translateY(-5px);
   }
   

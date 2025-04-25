@@ -10,15 +10,15 @@
 
 .question-card {
   background-color: var(--secondary-color);
-  padding: 40px; 
-  border-radius: 15px; 
-  width: 100%; 
-  max-width: 800px; 
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 800px;
   text-align: center;
 }
 
 .theme-toggle-btn {
-  padding: 12px 24px; 
+  padding: 12px 24px;
   background-color: var(--primary-color);
   color: white;
   border-radius: 5px;
@@ -26,12 +26,8 @@
   margin-bottom: 20px;
 }
 
-.theme-toggle-btn:hover {
-  background-color: var(--secondary-color);
-}
-
 .option-btn {
-  padding: 12px 24px; 
+  padding: 12px 24px;
   background-color: var(--primary-color);
   color: white;
   border-radius: 5px;
@@ -40,21 +36,17 @@
   margin: 10px;
 }
 
-.option-btn:hover {
-  background-color: var(--secondary-color);
-}
-
 .timer {
-  font-size: 1.5rem; 
+  font-size: 1.5rem;
   margin-top: 15px;
 }
 
 .question-text {
-  font-size: 1.9rem; 
+  font-size: 1.9rem;
   font-weight: bold;
 }
 
 .question-meta {
-  font-size: 1.2rem; 
+  font-size: 1.2rem;
   margin-bottom: 15px;
 }

@@ -3,6 +3,7 @@
   --text-color: #333333;
   --primary-color: #6e83f8;
   --secondary-color: #f1f1f1;
+  --hover-color: #00b7ff; 
 }
 
 .light {
@@ -10,6 +11,7 @@
   --text-color: #333333;
   --primary-color: #e130e7;
   --secondary-color: #e07de4;
+  --hover-color: #ff0000;
 }
 
 .dark {
@@ -17,6 +19,7 @@
   --text-color: white;
   --primary-color: #9b59b6;
   --secondary-color: #134377;
+  --hover-color: #00ccff;
 }
 
 body {
@@ -31,10 +34,13 @@ button {
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--hover-color);
+  color: white;
+  transform: scale(1.05);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -62,5 +68,6 @@ input {
 }
 
 .theme-toggle-btn:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--hover-color);
+  transform: scale(1.05);
 }
